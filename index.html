@@ -9,10 +9,53 @@
         <title>Title</title>
     </head>
     <body>
+        <header class="header">
+            <h1 id="locationLabel">West of House</h1>
+            <p>score: <span id="scoreLabel">0</span> moves: <span id="movesLabel">0</span></p>
+        </header>
+        <main class="main">
+            <div id="gameArea" class="game-area">
+                <div id="viewport" class="viewport"></div>
+                <div id="messageArea" class="message-area"></div>
+            </div>
+            <div class="control-panel">
+                <div class="direction-box">
+                    <img id="north" class="directional-button" src="media/up.png" alt="North">
+                    <img id="east" class="directional-button" src="media/left.png" alt="East">
+                    <img id="west" class="directional-button" src="media/right.png" alt="West">
+                    <img id="south" class="directional-button" src="media/down.png" alt="South">
+                </div>
+                <div class="inventory">
+                    <h2>Inventory</h2>
+                    <ul id="inventoryList" class="inventoryList">
+                    </ul>
+                </div>
+                <div class="debug-container">
+                    <h2><span id="debugCollapsible">▸</span> Debug Panel</h2>
+                    <form id="debugForm" class="debug-form">
+                        <label for="debugRoom">
+                            Current Room
+                            <input id="debugRoom" type="number" name="debugRoom" min="0" value="0" step="1">
+                        </label>
+                        <label for="debugLantern">
+                            Lantern Aquired
+                            <input id="debugLantern" type="checkbox" name="debugLantern">
+                        </label>
+                        <label for="debugLanternMoves">
+                            Lantern Moves Remaining
+                            <input id="debugLanternMoves" type="number" name="debugLanternMoves" min="0" value="100" step="1">
+                        </label>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <a href="mailto:aaronbpaden@gmail.com">Aaron Paden &copy; 2022 aaronbpaden@gmail.com</a>
+        </footer>
         <script src="js/jquery-3.6.0.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/app.js"></script>
+        <script type="module" src="js/app.js"></script>
     </body>
 </html>
 
