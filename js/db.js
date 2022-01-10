@@ -10,6 +10,6 @@ export let db = {
         new Room(1, "North of House", "This is north of house.", {north: null, east: null, west: null, south: 0}, '../media/backgrounds/north-of-house.webp'),
     ],
     entities: [
-        new Entity(0, "mailbox", "it's a mailbox", ["mailbox.png"], 200, 400, 100, 100, 0, [0]),
+        new Entity(0, "mailbox", "it's a mailbox", ["mailbox.png"], 200, 400, 100, 100, 0, ["mailbox0"]),
     ],
 }

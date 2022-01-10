@@ -45,7 +45,9 @@ export class Entity {
     }
     #connectEvents(eventList) {
         eventList.forEach((el, i) => {
-            this.imgs[i].addEventListener('click', events[el].bind(this));
+            this.imgs[i].addEventListener('click', ((event) => {
+                events[el](event, this);
+            }).bind(this));
         });
     }
     setClickEvent(itemState, callback) {
@@ -88,14 +90,13 @@ export class Entity {
     /* Reset the inline styling of the current image. */
     resetStyle() {
         let img = this.getImageFromPage(this.imgIdx);
-        console.log(img);
-        console.log(this.x, this.y, this.width, this.height, this.zIndex);
-        img.style.left = this.x;
-        img.style.top = this.y;
-        img.style.width = this.width;
-        img.style.height = this.height;
-        img.style.zIndex = this.zIndex;
-        console.log("after reset", img);
+        img.style.left = `${this.x}px`;
+        img.style.top = `${this.y}px`;
+        img.style.width = `${this.width}px`;
+        img.style.height = `${this.height}px`;
+        if (this.zIndex) {
+            img.style.zIndex = `${this.zIndex}`;
+        }
     }
     setState(id) {
         this.imgIdx = id;

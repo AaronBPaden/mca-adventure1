@@ -3,11 +3,9 @@
 import { db } from './db.js';
 import { state } from './state.js';
 
-export let eventList = [
-    /* 0 */
-    (event) => {
-        state.messageArea.innerHTML += `<p>${this.description}</p>`;
-        state.messageArea.scrollBy(40);
+export let eventList = {
+    "mailbox0": (event, entity) => {
+        state.messageArea.innerHTML += `<p>${entity.description}</p>`;
+        state.messageArea.scrollBy(0, 40);
     },
-    /* 1 */
-]
+}
