@@ -16,4 +16,9 @@ export let state = {
     debugRoom: document.getElementById('debugRoom'),
     debugLantern: document.getElementById('debugLantern'),
     debugLanternMoves: document.getElementById('debugLanternMoves'),
+    /* methods */
+    incrementMoves: () => {
+        state.moves++;
+        document.getElementById('movesLabel').innerText = state.moves;
+    },
 };

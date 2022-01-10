@@ -12,6 +12,7 @@ import { state } from './state.js';
         let roomExit = db.rooms[state.currentRoom].exits[ev.target.id];
         if (roomExit != null) {
             state.currentRoom = roomExit;
+            state.incrementMoves();
             drawRoom();
         } else {
             state.messageArea.innerHTML += "<p>Something halts your progress in this direction. Try a different one.</p>";
