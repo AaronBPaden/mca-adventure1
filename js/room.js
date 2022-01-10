@@ -15,6 +15,7 @@ export class Room {
     }
 
     draw() {
+        state.viewport.innerHTML = '';
         state.locationLabel.innerText = this.name;
         this.printDescription();
         state.viewport.style.background = '';
