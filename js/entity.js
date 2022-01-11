@@ -47,6 +47,7 @@ export class Entity {
         eventList.forEach((el, i) => {
             this.imgs[i].addEventListener('click', ((event) => {
                 state.incrementMoves();
+                state.updateDebug();
                 events[el](event, this);
             }).bind(this));
         });

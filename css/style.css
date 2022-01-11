@@ -106,6 +106,17 @@ h3 {
 	align-self: center;
 }
 
+.debug-header {
+	cursor: pointer;
+	user-select: none;
+}
+
+.debug-form {
+	overflow: hidden;
+	height: 0;
+	transition: height 0.5s;
+}
+
 /* footer section */
 
 .footer {

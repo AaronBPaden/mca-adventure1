@@ -31,8 +31,8 @@
                     </ul>
                 </div>
                 <div class="debug-container">
-                    <h2><span id="debugCollapsible">▸</span> Debug Panel</h2>
-                    <form id="debugForm" class="debug-form">
+                    <h2 id="debugHeader" class="debug-header"><span id="debugCollapsible">▸</span> Debug Panel</h2>
+                    <form id="debugForm" class="debug-form" action="" method="post">
                         <label for="debugRoom">
                             Current Room
                             <input id="debugRoom" type="number" name="debugRoom" min="0" value="0" step="1">
@@ -45,6 +45,11 @@
                             Lantern Moves Remaining
                             <input id="debugLanternMoves" type="number" name="debugLanternMoves" min="0" value="100" step="1">
                         </label>
+                        <label for="debugAddItemId">
+                            Add Item ID
+                            <input id="debugAddItemId" type="number" name="debugAddItemId" min="0" value="0" step="1">
+                        </label>
+                        <input id="debugSubmitButton" class="btn btn-primary" type="submit" value="Submit!">
                     </form>
                 </div>
             </div>
