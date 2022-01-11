@@ -1,6 +1,11 @@
 "use strict"
 
 export let state = {
+    actions: Object.freeze({
+        USE: Symbol('USE'),
+        EXAMINE: Symbol('EXAMINE'),
+        PICKUP: Symbol('PICKUP'),
+    }),
     score: 0,
     moves: 0,
     currentRoom: 0,
@@ -8,6 +13,7 @@ export let state = {
     hasLantern: false,
     lanternMoves: 100,
     inventory: [],
+    activeAction: null,
     /* global display elements */
     locationLabel: document.getElementById('locationLabel'),
     viewport: document.getElementById('viewport'),
@@ -30,5 +36,25 @@ export let state = {
         state.debugRoom.value = state.currentRoom;
         state.debugLantern.checked = state.hasLantern;
         state.debugLanternMoves.value = state.lanternMoves;
+    },
+    setAction: (action) => {
+        switch (action) {
+            case state.actions.USE:
+                document.body.style.cursor = "auto";
+                state.activeAction = action;
+                break;
+            case state.actions.EXAMINE:
+                document.body.style.cursor = "url(../media/buttons/examine.png), auto";
+                state.activeAction = action;
+                break;
+            case state.actions.PICKUP:
+                document.body.style.cursor = "url(../media/buttons/pickup.png), auto";
+                state.activeAction = action;
+                break;
+            default:
+                console.log(`Invalid action`);
+                state.activeAction = state.actions.USE;
+                break;
+        }
     },
 };

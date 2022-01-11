@@ -106,6 +106,15 @@ h3 {
 	align-self: center;
 }
 
+.action-box {
+	margin: 1rem auto;
+}
+
+.action-button {
+	margin: 1rem;
+	cursor: pointer;
+}
+
 .debug-header {
 	cursor: pointer;
 	user-select: none;

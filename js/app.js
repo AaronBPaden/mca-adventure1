@@ -46,5 +46,8 @@ import { state } from './state.js';
             drawRoom();
         }
     });
+    document.querySelectorAll('.action-button').forEach((el) => el.addEventListener('click', (ev) => {
+        state.setAction(state.actions[ev.target.id.toUpperCase()]);
+    }));
     drawRoom();
 })();
