@@ -28,9 +28,11 @@ export let state = {
     debugAddItemId: document.getElementById('debugAddItemId'),
     debugSubmitButton: document.getElementById('debugSubmitButton'),
     /* methods */
-    incrementMoves: () => {
+    incrementMoves: (isDark) => {
         state.moves++;
         document.getElementById('movesLabel').innerText = state.moves;
+        if (isDark && state.hasLantern) state.lanternMoves--;
+        state.updateDebug();
     },
     updateDebug: () => {
         state.debugRoom.value = state.currentRoom;

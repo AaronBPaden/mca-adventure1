@@ -12,7 +12,7 @@ import { state } from './state.js';
         let roomExit = db.rooms[state.currentRoom].exits[ev.target.id];
         if (roomExit != null) {
             state.currentRoom = roomExit;
-            state.incrementMoves();
+            state.incrementMoves(db.rooms[state.currentRoom].isDark);
             state.updateDebug();
             drawRoom();
         } else {
