@@ -8,6 +8,7 @@ import { state } from './state.js';
         db.rooms[state.currentRoom].draw();
     }
     let directionalButtons = document.querySelectorAll('.directional-button');
+    state.activeAction = state.actions.USE;
     directionalButtons.forEach((e) => e.addEventListener('click', (ev) => {
         let roomExit = db.rooms[state.currentRoom].exits[ev.target.id];
         if (roomExit != null) {
@@ -40,7 +41,7 @@ import { state } from './state.js';
             state.inventory.push(db.entities[parseInt(addItem)]);
         }
 
-        let room = parseInt(debugRoom.value);
+        let room = debugRoom.value;
         if (room != state.currentRoom) {
             state.currentRoom = room;
             drawRoom();

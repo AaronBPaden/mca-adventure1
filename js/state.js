@@ -8,7 +8,7 @@ export let state = {
     }),
     score: 0,
     moves: 0,
-    currentRoom: 0,
+    currentRoom: "westOfHouse",
     carriedItem: null,
     hasLantern: false,
     lanternMoves: 100,
