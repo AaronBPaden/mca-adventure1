@@ -60,7 +60,8 @@ export class Entity {
     /* print description in the message area */
     printDescription() {
         let messageArea = document.getElementById('messageArea');
-        messageArea.innerHTML = `<p class="message-text">${this.description}</p>`;
+        messageArea.innerHTML += `<p class="message-text">${this.description}</p>`;
+        state.messageArea.scrollBy(0, parseInt(state.messageArea.clientHeight)-20);
     }
     move(x, y) {
         this.x = x;

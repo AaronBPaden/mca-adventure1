@@ -46,6 +46,7 @@ export class Room {
     printDescription() {
         if (this.#canSee()) {
             state.messageArea.innerHTML = `<p class="message-text">${this.description}</p>`;
+            state.messageArea.scrollBy(0, parseInt(state.messageArea.clientHeight)-20);
         } else {
             state.messageArea.innerHTML = '<p class="message-text">It is pitch black. You are likely to be eaten by a grue.</p>';
         }

@@ -4,7 +4,7 @@ import { db } from './db.js';
 import { state } from './state.js';
 
 const printMessage = (msg) => {
-    state.messageArea.innerHTML += `<p>${msg}</p>`;
+    state.messageArea.innerHTML += `<p class="message-text">${msg}</p>`;
     /* TODO: find a good sweet spot for messages whose length
      * is greater than the message area height. */
     state.messageArea.scrollBy(0, parseInt(state.messageArea.clientHeight)-20);
@@ -17,7 +17,7 @@ export let eventList = {
                 printMessage("The mailbox is rusted shut.");
                 break;
             case state.actions.EXAMINE:
-                printMessage("It's an ordinary mailbox.");
+                entity.printDescription();
                 break;
             case state.actions.PICKUP:
                 printMessage("The mailbox is stuck firmly in the ground.");
