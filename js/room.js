@@ -27,7 +27,7 @@ export class Room {
             return;
         }
 
-        if (this.background) state.viewport.style.background = `center / cover url(${this.background})`;
+        if (this.background) state.viewport.style.background = `center / cover url(media/backgrounds/${this.background})`;
         if (this.objectList === null) return;
 
         this.objectList.forEach((el) => {

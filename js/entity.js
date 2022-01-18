@@ -29,7 +29,7 @@ export class Entity {
         urlList.forEach((e, i) => {
             let img = new Image();
             img.id = this.getImageId(i);
-            img.src = `../media/entities/${e}`;
+            img.src = `media/entities/${e}`;
             img.alt = name;
             img.style.position = "absolute";
             this.imgs.push(img);
