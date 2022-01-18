@@ -45,8 +45,9 @@ export class Entity {
     }
     #connectEvents(eventList) {
         eventList.forEach((el, i) => {
-            console.log(`adding event to ${i}`);
             this.imgs[i].addEventListener('click', (event) => {
+                console.log(event.target);
+                if (event.target !== this.imgs[i]) return;
                 state.incrementMoves();
                 state.updateDebug();
                 events[el](event, this);
@@ -78,10 +79,6 @@ export class Entity {
         this.width = width;
         this.height = height;
         this.resetStyle();
-    }
-    /* Change the z-index value for the current image */
-    setZIndex(n) {
-        this.zIndex = n;
     }
     /*
      * Entities can have multiple states represented by different images, for example a mailbox that opens and closes.

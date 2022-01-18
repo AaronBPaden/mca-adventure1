@@ -16,10 +16,12 @@ export let eventList = {
         const openMailbox = () => {
             mailboxDoor.move(663, 473);
             mailboxDoor.resize(55, 114);
+            mailboxDoor.zIndex = 1;
         }
         const closeMailbox = () => {
             mailboxDoor.move(679, 476)
             mailboxDoor.resize(37, 68);
+            mailboxDoor.zIndex = 4;
         }
         switch(state.activeAction) {
             case state.actions.USE:
@@ -39,5 +41,7 @@ export let eventList = {
             default:
                 break;
         }
+    },
+    "letter0": (event, entity) => {
     },
 }
