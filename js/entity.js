@@ -38,7 +38,7 @@ export class Entity {
             let img = new Image();
             img.src = inventoryThumbnail;
             img.alt = name;
-            this.inventoryThumbnail = inventoryThumbnail;
+            this.inventoryThumbnail = img;
         } else {
             this.inventoryThumbnail = null;
         }
