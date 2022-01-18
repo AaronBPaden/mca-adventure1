@@ -46,7 +46,6 @@ export class Entity {
     #connectEvents(eventList) {
         eventList.forEach((el, i) => {
             this.imgs[i].addEventListener('click', (event) => {
-                console.log(event.target);
                 if (event.target !== this.imgs[i]) return;
                 state.incrementMoves();
                 state.updateDebug();
