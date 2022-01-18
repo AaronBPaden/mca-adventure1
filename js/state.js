@@ -48,11 +48,11 @@ export let state = {
                 state.activeAction = action;
                 break;
             case state.actions.EXAMINE:
-                document.body.style.cursor = "url(../media/buttons/examine.png), auto";
+                document.body.style.cursor = "url(media/buttons/examine.png), auto";
                 state.activeAction = action;
                 break;
             case state.actions.PICKUP:
-                document.body.style.cursor = "url(../media/buttons/pickup.png), auto";
+                document.body.style.cursor = "url(media/buttons/pickup.png), auto";
                 state.activeAction = action;
                 break;
             case state.actions.COMBINE:
