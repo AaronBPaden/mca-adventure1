@@ -6,10 +6,11 @@ import { state } from './state.js';
 
 export let db = {
     rooms: {
-        westOfHouse: new Room(0, "West of House", "This is west of house.", {north: "northOfHouse", east: null, west: null, south: null}, false, '../media/backgrounds/west-of-house.webp', ["mailbox"]),
+        westOfHouse: new Room(0, "West of House", "This is west of house.", {north: "northOfHouse", east: null, west: null, south: null}, false, '../media/backgrounds/west-of-house.png', ["mailbox", "mailboxDoor"]),
         northOfHouse: new Room(1, "North of House", "This is north of house.", {north: null, east: null, west: null, south: "westOfHouse"}, true, '../media/backgrounds/north-of-house.webp'),
     },
     entities: {
-        mailbox: new Entity(0, "mailbox", "it's a mailbox", ["mailbox.png"], 200, 400, 100, 100, 0, ["mailbox0"]),
+        mailbox: new Entity(0, "mailbox", "it's a mailbox", ["mailbox.png"], 200, 400, 630, 375, ["mailbox0"]),
+        mailboxDoor: new Entity(0, "mailbox door", "The mailbox is closed", ["mailbox-closed.png", "mailbox-open.png"], 37, 68, 679, 476, ["mailbox0", "mailbox0"]),
     },
 }

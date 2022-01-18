@@ -38,7 +38,6 @@ export class Room {
     }
 
     #canSee() {
-        console.log(!this.isDark || (state.hasLantern && state.lanternMoves > 0));
         return (!this.isDark || (state.hasLantern && state.lanternMoves > 0));
     }
 
@@ -50,5 +49,10 @@ export class Room {
         } else {
             state.messageArea.innerHTML = '<p class="message-text">It is pitch black. You are likely to be eaten by a grue.</p>';
         }
+    }
+
+    /* Remove an item from objectList */
+    removeItem(item) {
+        this.objectList = this.objectList.filter(el => el.id != item.id);
     }
 }

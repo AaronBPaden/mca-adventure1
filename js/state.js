@@ -5,6 +5,7 @@ export let state = {
         USE: Symbol('USE'),
         EXAMINE: Symbol('EXAMINE'),
         PICKUP: Symbol('PICKUP'),
+        COMBINE: Symbol('COMBINE'),
     }),
     score: 0,
     moves: 0,
@@ -18,6 +19,7 @@ export let state = {
     locationLabel: document.getElementById('locationLabel'),
     viewport: document.getElementById('viewport'),
     messageArea: document.getElementById('messageArea'),
+    inventroyList: document.getElementById('inventoryList'),
     /* debug elements */
     debugHeader: document.getElementById('debugHeader'),
     debugCollapsible: document.getElementById('debugCollapsible'),
@@ -53,6 +55,9 @@ export let state = {
                 document.body.style.cursor = "url(../media/buttons/pickup.png), auto";
                 state.activeAction = action;
                 break;
+            case state.actions.COMBINE:
+                document.body.style.cursor = `url(${state.thumbnailSrc}), auto`;
+                state.activeAction = action;
             default:
                 console.log(`Invalid action`);
                 state.activeAction = state.actions.USE;

@@ -5,7 +5,7 @@ import { db } from './db.js';
 import { eventList as events } from './eventList.js';
 
 export class Entity {
-    constructor(id, name, description, urlList, width, height, x, y, points = 0, eventList = [], zIndex = null, inventoryThumbnail = null) {
+    constructor(id, name, description, urlList, width, height, x, y, eventList = [], points = 0, zIndex = null, inventoryThumbnail = null) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -45,11 +45,17 @@ export class Entity {
     }
     #connectEvents(eventList) {
         eventList.forEach((el, i) => {
-            this.imgs[i].addEventListener('click', ((event) => {
+            console.log(`adding event to ${i}`);
+            this.imgs[i].addEventListener('click', (event) => {
                 state.incrementMoves();
                 state.updateDebug();
                 events[el](event, this);
-            }).bind(this));
+            });
+        });
+        if (this.inventoryThumbnail === null) return;
+        this.inventoryThumbnail.addEventListener('click', (event) => {
+            state.carriedItem = this;
+            state.setAction(state.actions.COMBINE);
         });
     }
     setClickEvent(itemState, callback) {
@@ -85,6 +91,7 @@ export class Entity {
     incrementState() {
         this.imgIdx++;
         if (this.imgIdx === this.imgs.length) this.imgIdx = 0;
+        db.rooms[state.currentRoom].draw();
     }
     /* query the page for the image */
     getImageFromPage(i) {
@@ -107,5 +114,17 @@ export class Entity {
     /* return a copy of the current image */
     getImageElement() {
         return this.imgs[this.imgIdx];
+    }
+    /* Pick up the item and place it in the players inventory. */
+    pickup() {
+        state.currentRoom.removeItem(this.id);
+        state.addItem(this);
+    }
+    /* Return the url for the inventory thumbnail */
+    get thumbnailSrc() {
+        return this.inventoryThumbnail.src;
+    }
+    get currentIndex() {
+        return this.imgIdx;
     }
 }
