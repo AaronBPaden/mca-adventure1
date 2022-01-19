@@ -49,6 +49,10 @@ export class Entity {
     }
     #connectEvents(eventList) {
         eventList.forEach((el, i) => {
+            if (i > this.imgs.length) {
+                console.log(`eventList length mismatch for ${this.name}. ${el} is discarded for this entity.`);
+                return;
+            }
             this.imgs[i].addEventListener('click', (event) => {
                 if (event.target !== this.imgs[i]) return;
                 state.incrementMoves();
