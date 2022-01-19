@@ -5,7 +5,10 @@ import { state } from './state.js';
 
 (function() {
     const drawRoom = () => {
-        db.rooms[state.currentRoom].draw();
+        let room = db.rooms[state.currentRoom];
+        room.draw();
+        state.messageArea.innerHTML = "";
+        room.printDescription();
     }
     let directionalButtons = document.querySelectorAll('.directional-button');
     state.activeAction = state.actions.USE;

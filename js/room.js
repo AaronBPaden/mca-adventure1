@@ -18,7 +18,6 @@ export class Room {
     draw() {
         state.viewport.innerHTML = '';
         state.locationLabel.innerText = this.name;
-        this.printDescription();
         state.viewport.style.background = '';
 
         /* If the room is dark and the player doesn't have a lantern, we set the background to black and don't add items. */
@@ -44,10 +43,10 @@ export class Room {
     /* print description in the message area */
     printDescription() {
         if (this.#canSee()) {
-            state.messageArea.innerHTML = `<p class="message-text">${this.description}</p>`;
+            state.messageArea.innerHTML += `<p class="message-text">${this.description}</p>`;
             state.messageArea.scrollBy(0, parseInt(state.messageArea.clientHeight)-20);
         } else {
-            state.messageArea.innerHTML = '<p class="message-text">It is pitch black. You are likely to be eaten by a grue.</p>';
+            state.messageArea.innerHTML += '<p class="message-text">It is pitch black. You are likely to be eaten by a grue.</p>';
         }
     }
 
