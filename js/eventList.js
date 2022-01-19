@@ -17,11 +17,13 @@ export let eventList = {
             mailboxDoor.move(663, 473);
             mailboxDoor.resize(55, 114);
             mailboxDoor.zIndex = 1;
+            db.entities.letter.toggleHidden();
         }
         const closeMailbox = () => {
             mailboxDoor.move(679, 476)
             mailboxDoor.resize(37, 68);
             mailboxDoor.zIndex = 4;
+            db.entities.letter.toggleHidden();
         }
         switch(state.activeAction) {
             case state.actions.USE:
@@ -43,5 +45,21 @@ export let eventList = {
         }
     },
     "letter0": (event, entity) => {
+        switch(state.activeAction) {
+            case state.actions.USE:
+                printMessage("The letter can't be used.");
+                break;
+            case state.actions.EXAMINE:
+                entity.printDescription();
+                break;
+            case state.actions.PICKUP:
+                entity.pickup();
+                break;
+            case state.actions.COMBINE:
+                printMessage("That won't work.");
+                break;
+            default:
+                break;
+        }
     },
 }

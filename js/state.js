@@ -19,7 +19,7 @@ export let state = {
     locationLabel: document.getElementById('locationLabel'),
     viewport: document.getElementById('viewport'),
     messageArea: document.getElementById('messageArea'),
-    inventroyList: document.getElementById('inventoryList'),
+    inventoryList: document.getElementById('inventoryList'),
     /* debug elements */
     debugHeader: document.getElementById('debugHeader'),
     debugCollapsible: document.getElementById('debugCollapsible'),
@@ -35,6 +35,10 @@ export let state = {
         document.getElementById('movesLabel').innerText = state.moves;
         if (isDark && state.hasLantern) state.lanternMoves--;
         state.updateDebug();
+    },
+    updateScore: (points) => {
+        state.score += points;
+        document.getElementById('scoreLabel').innerText = state.score;
     },
     updateDebug: () => {
         state.debugRoom.value = state.currentRoom;
@@ -63,5 +67,12 @@ export let state = {
                 state.activeAction = state.actions.USE;
                 break;
         }
+    },
+    addItem: (item) => {
+        state.inventory.push(item);
+        let li = document.createElement("li");
+        li.classList.add("inventory-item");
+        li.appendChild(item.inventoryThumbnail);
+        state.inventoryList.appendChild(li);
     },
 };

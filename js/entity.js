@@ -5,7 +5,7 @@ import { db } from './db.js';
 import { eventList as events } from './eventList.js';
 
 export class Entity {
-    constructor(id, name, description, urlList, width, height, x, y, eventList = [], points = 0, zIndex = null, inventoryThumbnail = null) {
+    constructor(id, name, description, urlList, width, height, x, y, eventList = [], points = 0, zIndex = null, inventoryThumbnail = null, hidden = false) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -18,6 +18,9 @@ export class Entity {
         this.imgIdx = 0;
         this.#generateImages(urlList, inventoryThumbnail);
         this.#connectEvents(eventList);
+        if (hidden) {
+            this.toggleHidden();
+        }
     }
     /* convert the image into a valid HTML id */
     getImageId(i) {
@@ -36,8 +39,9 @@ export class Entity {
         });
         if (inventoryThumbnail) {
             let img = new Image();
-            img.src = inventoryThumbnail;
+            img.src = `media/entities/${inventoryThumbnail}`;
             img.alt = name;
+            img.classList.add("inventory-thumbnail");
             this.inventoryThumbnail = img;
         } else {
             this.inventoryThumbnail = null;
@@ -113,8 +117,9 @@ export class Entity {
     }
     /* Pick up the item and place it in the players inventory. */
     pickup() {
-        state.currentRoom.removeItem(this.id);
+        db.rooms[state.currentRoom].removeItem(this);
         state.addItem(this);
+        state.updateScore(this.points);
     }
     /* Return the url for the inventory thumbnail */
     get thumbnailSrc() {
@@ -122,5 +127,8 @@ export class Entity {
     }
     get currentIndex() {
         return this.imgIdx;
+    }
+    toggleHidden() {
+        this.getImageElement().classList.toggle("d-none");
     }
 }

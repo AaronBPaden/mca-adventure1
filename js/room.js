@@ -53,6 +53,7 @@ export class Room {
 
     /* Remove an item from objectList */
     removeItem(item) {
-        this.objectList = this.objectList.filter(el => el.id != item.id);
+        this.objectList = this.objectList.filter(el => db.entities[el].id !== item.id);
+        this.draw();
     }
 }
