@@ -5,7 +5,7 @@ import { db } from './db.js';
 import { eventList as events } from './eventList.js';
 
 export class Entity {
-    constructor(id, name, description, urlList, width, height, x, y, eventList = [], points = 0, zIndex = null, inventoryThumbnail = null, hidden = false) {
+    constructor({id, name, description, urlList, width, height, x, y, eventList = [], points = 0, zIndex = null, inventoryThumbnail = null, hidden = false, inventoryEvent = null}) {
         this.id = id;
         this.name = name;
         this.description = description;

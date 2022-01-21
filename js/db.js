@@ -10,9 +10,9 @@ export let db = {
         northOfHouse: new Room(1, "North of House", "This is north of house.", {north: null, east: null, west: null, south: "westOfHouse"}, true, 'north-of-house.png'),
     },
     entities: {
-        mailbox: new Entity(0, "mailbox", "it's a mailbox", ["mailbox.png"], 200, 400, 630, 375, ["mailbox0"]),
-        mailboxBack: new Entity(1, "mailbox back", "it's a mailbox", ["mailbox-back.png"], 76, 83, 701, 459, ["mailbox0"], 0, 4),
-        mailboxDoor: new Entity(2, "mailbox door", "The mailbox is closed", ["mailbox-closed.png", "mailbox-open.png"], 37, 68, 679, 476, ["mailbox0", "mailbox0"], 0, 4),
-        letter: new Entity(3, "a letter", "It's a letter", ["document.png"], 69, 56, 670, 498, ["letter0"], 10, 3, "document.png", true),
+        mailbox: new Entity({id: 0, name: "mailbox", description: "it's a mailbox", urlList: ["mailbox.png"], width: 200, height: 400, x: 630, y: 375, eventList: ["mailbox0"]}),
+        mailboxBack: new Entity({id: 1, name: "mailbox back", description: "it's a mailbox", urlList: ["mailbox-back.png"], width: 76, height: 83, x: 701, y: 459, eventList: ["mailbox0"], zIndex: 4}),
+        mailboxDoor: new Entity({id: 2, name: "mailbox door", description: "The mailbox is closed", urlList: ["mailbox-closed.png", "mailbox-open.png"], width: 37, height: 68, x: 679, y: 476, eventList: ["mailbox0", "mailbox0"], zIndex: 4}),
+        letter: new Entity({id: 3, name: "a letter", description: "It's a letter", urlList: ["document.png"], width: 69, height: 56, x: 670, y: 498, eventList: ["letter0"], points: 10, zIndex: 3, inventoryThumbnail: "document.png", hidden: true, inventoryEvent: "letterInventory"}),
     },
 }
