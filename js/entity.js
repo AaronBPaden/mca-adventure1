@@ -17,7 +17,7 @@ export class Entity {
         this.zIndex = zIndex;
         this.imgIdx = 0;
         this.#generateImages(urlList, inventoryThumbnail);
-        this.#connectEvents(eventList);
+        this.#connectEvents(eventList, inventoryEvent);
         if (hidden) {
             this.toggleHidden();
         }
@@ -47,7 +47,7 @@ export class Entity {
             this.inventoryThumbnail = null;
         }
     }
-    #connectEvents(eventList) {
+    #connectEvents(eventList, inventoryEvent) {
         eventList.forEach((el, i) => {
             if (i > this.imgs.length) {
                 console.log(`eventList length mismatch for ${this.name}. ${el} is discarded for this entity.`);
@@ -62,8 +62,12 @@ export class Entity {
         });
         if (this.inventoryThumbnail === null) return;
         this.inventoryThumbnail.addEventListener('click', (event) => {
-            state.carriedItem = this;
-            state.setAction(state.actions.COMBINE);
+            if (state.activeAction === state.actions.PICKUP) {
+                state.carriedItem = this;
+                state.setAction(state.actions.COMBINE);
+            } else if (inventoryEvent) {
+                events[inventoryEvent](event, this);
+            }
         });
     }
     setClickEvent(itemState, callback) {

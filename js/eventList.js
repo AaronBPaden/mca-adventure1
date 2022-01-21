@@ -62,4 +62,33 @@ export let eventList = {
                 break;
         }
     },
+    "letterInventory": (event, entity) => {
+        switch(state.activeAction) {
+            case state.actions.USE:
+                printMessage("The letter is already open. Try examining it.");
+                break;
+            case state.actions.EXAMINE:
+                let totalPoints = 0;
+                printMessage("Welcome to Notzork!");
+                printMessage("The Underground States of Notzork is a legally distinct entity from Zork: The Great Underground Empire.");
+                printMessage("But like that game, Notzork is also a game of adventure, danger and low cunning.");
+                /* TODO: figure out the maximum number of points when the game is finished.
+                 * It can't be calculated from db.entities, because points can also be given in events. */
+                printMessage("Try to get all x points in as few moves as possible!");
+                break;
+            case state.actions.PICKUP:
+                console.log("the PICKUP action for inventory items should be handled by entity object.");
+                break;
+            case state.actions.COMBINE:
+                if (state.carriedItem === db.entities.letter) {
+                    state.carriedItem = null;
+                    state.setAction(state.actions.PICKUP);
+                } else {
+                    printMessage("That won't work.");
+                }
+                break;
+            default:
+                break;
+        }
+    },
 }
