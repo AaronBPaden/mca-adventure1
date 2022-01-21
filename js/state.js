@@ -60,8 +60,9 @@ export let state = {
                 state.activeAction = action;
                 break;
             case state.actions.COMBINE:
-                document.body.style.cursor = `url(${state.thumbnailSrc}), auto`;
+                document.body.style.cursor = `url(${state.carriedItem.thumbnailSrc}), auto`;
                 state.activeAction = action;
+                break;
             default:
                 console.log(`Invalid action`);
                 state.activeAction = state.actions.USE;
