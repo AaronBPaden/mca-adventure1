@@ -5,6 +5,12 @@ import { state } from './state.js';
 import { db } from './db.js';
 
 export class Room {
+    static exits = Object.freeze({
+        NORTH: Symbol("NORTH"),
+        WEST: Symbol("WEST"),
+        EAST: Symbol("EAST"),
+        SOUTH: Symbol("SOUTH"),
+    });
     constructor(id, name, description, exits, isDark = false, background = null, objectList = null) {
         this.name = name;
         this.description = description;
@@ -38,6 +44,29 @@ export class Room {
 
     #canSee() {
         return (!this.isDark || (state.hasLantern && state.lanternMoves > 0));
+    }
+
+    /* Change exit connections */
+    setRoom(exit, roomIdentifier) {
+        if (!db.rooms.hasOwn(roomIdentifier)) {
+            console.log(`Room ${roomIdentifier} does not exist.`);
+            return;
+        }
+        switch(exit) {
+            case Room.exits.NORTH:
+                this.north = roomIdentifier;
+                break;
+            case Room.exits.WEST:
+                this.west = roomIdentifier;
+                break;
+            case Room.exits.EAST:
+                this.east = roomIdentifier;
+                break;
+            case Room.exits.SOUTH:
+                break;
+            default:
+                console.log("invalid exit in setRoom");
+        }
     }
 
     /* print description in the message area */
