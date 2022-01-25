@@ -12,7 +12,7 @@ const printMessage = (msg) => {
 };
 
 export let eventList = {
-    "mailbox0": (event, entity) => {
+    mailbox0: (event, entity) => {
         let mailboxDoor = db.entities.mailboxDoor;
         const openMailbox = () => {
             mailboxDoor.move(663, 473);
@@ -45,7 +45,7 @@ export let eventList = {
                 break;
         }
     },
-    "letter0": (event, entity) => {
+    letter0: (event, entity) => {
         switch(state.activeAction) {
             case state.actions.USE:
                 printMessage("The letter can't be used.");
@@ -63,7 +63,7 @@ export let eventList = {
                 break;
         }
     },
-    "letterInventory": (event, entity) => {
+    letterInventory: (event, entity) => {
         switch(state.activeAction) {
             case state.actions.USE:
                 printMessage("The letter is already open. Try examining it.");
@@ -92,7 +92,7 @@ export let eventList = {
                 break;
         }
     },
-    "window0": (event, entity) => {
+    window0: (event, entity) => {
         const updateWindow = () => {
             entity.incrementState();
             entity.description = "An old window. It is completely open now. You can see a kitchen on the other side, to the north"
@@ -122,7 +122,7 @@ export let eventList = {
                 break;
         }
     },
-    "window1": (event, entity) => {
+    window1: (event, entity) => {
         switch(state.activeAction) {
             case state.actions.USE:
                 printMessage("Best leave it open for now.");
