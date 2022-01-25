@@ -136,6 +136,12 @@ export class Entity {
     get currentIndex() {
         return this.imgIdx;
     }
+    /* return {x, y} coordinates of the center the thumbnail image */
+    thumbnailCenter() {
+        let x = Math.round(this.inventoryThumbnail.width/2);
+        let y = Math.round(this.inventoryThumbnail.height/2);
+        return {x: x, y: y};
+    }
     toggleHidden() {
         this.getImageElement().classList.toggle("d-none");
     }

@@ -56,11 +56,12 @@ export let state = {
                 state.activeAction = action;
                 break;
             case state.actions.PICKUP:
-                document.body.style.cursor = "url(media/buttons/pickup.png), auto";
+                document.body.style.cursor = "url(media/buttons/pickup.png) 12 11, auto";
                 state.activeAction = action;
                 break;
             case state.actions.COMBINE:
-                document.body.style.cursor = `url(${state.carriedItem.thumbnailSrc}), auto`;
+                let thumbnailCenter = state.carriedItem.thumbnailCenter();
+                document.body.style.cursor = `url(${state.carriedItem.thumbnailSrc}) ${thumbnailCenter.x} ${thumbnailCenter.y}, auto`;
                 state.activeAction = action;
                 break;
             default:
