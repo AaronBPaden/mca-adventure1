@@ -11,7 +11,7 @@ export class Room {
         EAST: Symbol("EAST"),
         SOUTH: Symbol("SOUTH"),
     });
-    constructor({id, name, description, exits, isDark = false, background = null, objectList = null}) {
+    constructor({id, name, description, exits = {north: null, west: null, east: null, south: null}, isDark = false, background = null, objectList = null}) {
         this.name = name;
         this.description = description;
         this.exits = exits;
