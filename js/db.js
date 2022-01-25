@@ -17,6 +17,6 @@ export let db = {
         mailboxBack: new Entity({id: 1, name: "mailbox back", description: "it's a mailbox", urlList: ["mailbox-back.png"], width: 76, height: 83, x: 701, y: 459, eventList: ["mailbox0"], zIndex: 4}),
         mailboxDoor: new Entity({id: 2, name: "mailbox door", description: "The mailbox is closed", urlList: ["mailbox-closed.png", "mailbox-open.png"], width: 37, height: 68, x: 679, y: 476, eventList: ["mailbox0", "mailbox0"], zIndex: 4}),
         letter: new Entity({id: 3, name: "a letter", description: "It's a letter", urlList: ["document.png"], width: 69, height: 56, x: 670, y: 498, eventList: ["letter0"], points: 10, zIndex: 3, inventoryThumbnail: "document.png", hidden: true, inventoryEvent: "letterInventory"}),
-        eastWindow: new Entity({id: 4, name: 'A window', description: 'An old window. It is slightly adjar.', urlList: ['east-window0.png', 'east-window1.png'], width: 335, height: 206, x: 100, y: 100}),
+        southWindow: new Entity({id: 4, name: 'A window', description: 'An old window. It is slightly adjar.', urlList: ['south-window0.png', 'south-window1.png'], width: 335, height: 206, x: 100, y: 100}),
     },
 }
