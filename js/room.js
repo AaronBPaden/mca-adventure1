@@ -48,21 +48,22 @@ export class Room {
 
     /* Change exit connections */
     setRoom(exit, roomIdentifier) {
-        if (!db.rooms.hasOwn(roomIdentifier)) {
+        if (!'roomIdentifier' in db.rooms) {
             console.log(`Room ${roomIdentifier} does not exist.`);
             return;
         }
         switch(exit) {
             case Room.exits.NORTH:
-                this.north = roomIdentifier;
+                this.exits.north = roomIdentifier;
                 break;
             case Room.exits.WEST:
-                this.west = roomIdentifier;
+                this.exits.west = roomIdentifier;
                 break;
             case Room.exits.EAST:
-                this.east = roomIdentifier;
+                this.exits.east = roomIdentifier;
                 break;
             case Room.exits.SOUTH:
+                this.exits.south = roomIdentifier;
                 break;
             default:
                 console.log("invalid exit in setRoom");
