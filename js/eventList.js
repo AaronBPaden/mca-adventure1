@@ -2,12 +2,13 @@
 
 import { db } from './db.js';
 import { state } from './state.js';
+import { Room } from './room.js';
 
 const printMessage = (msg) => {
     state.messageArea.innerHTML += `<p class="message-text">${msg}</p>`;
     /* TODO: find a good sweet spot for messages whose length
      * is greater than the message area height. */
-    state.messageArea.scrollBy(0, parseInt(state.messageArea.clientHeight)-20);
+    state.messageArea.scrollBy(0, parseInt(state.messageArea.clientHeight)-100);
 };
 
 export let eventList = {
@@ -86,6 +87,54 @@ export let eventList = {
                 } else {
                     printMessage("That won't work.");
                 }
+                break;
+            default:
+                break;
+        }
+    },
+    "window0": (event, entity) => {
+        const updateWindow = () => {
+            entity.incrementState();
+            entity.description = "An old window. It is completely open now. You can see a kitchen on the other side, to the north"
+
+            let southOfHouse = db.rooms.southOfHouse;
+            southOfHouse.setRoom(Room.exits.NORTH, "kitchen");
+            southOfHouse.draw();
+
+            state.updateScore(20);
+
+            printMessage("You open the window. You could probably crawl through and enter the kitchen to the north.");
+        }
+        switch(state.activeAction) {
+            case state.actions.USE:
+                updateWindow();
+                break;
+            case state.actions.EXAMINE:
+                entity.printDescription();
+                break;
+            case state.actions.PICKUP:
+                printMessage("You can't pick up a window. That makes no sense.");
+                break;
+            case state.actions.COMBINE:
+                printMessage("That won't work.");
+                break;
+            default:
+                break;
+        }
+    },
+    "window1": (event, entity) => {
+        switch(state.activeAction) {
+            case state.actions.USE:
+                printMessage("Best leave it open for now.");
+                break;
+            case state.actions.EXAMINE:
+                entity.printDescription();
+                break;
+            case state.actions.PICKUP:
+                printMessage("You can't pick up a window. That makes no sense.");
+                break;
+            case state.actions.COMBINE:
+                printMessage("That won't work.");
                 break;
             default:
                 break;
