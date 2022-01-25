@@ -52,7 +52,7 @@ export let state = {
                 state.activeAction = action;
                 break;
             case state.actions.EXAMINE:
-                document.body.style.cursor = "url(media/buttons/examine.png), auto";
+                document.body.style.cursor = "url(media/buttons/examine.png) 16 15, auto";
                 state.activeAction = action;
                 break;
             case state.actions.PICKUP:
