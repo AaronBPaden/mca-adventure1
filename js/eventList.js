@@ -140,4 +140,40 @@ export let eventList = {
                 break;
         }
     },
+    key0: (event, entity) => {
+        switch(state.activeAction) {
+            case state.actions.USE:
+                printMessage("You can't use the key.");
+                break;
+            case state.actions.EXAMINE:
+                entity.printDescription();
+                break;
+            case state.actions.PICKUP:
+                entity.pickup();
+                break;
+            case state.actions.COMBINE:
+                printMessage("That won't work.");
+                break;
+            default:
+                break;
+        }
+    },
+    rope0: (event, entity) => {
+        switch(state.activeAction) {
+            case state.actions.USE:
+                printMessage("You can't use the rope.");
+                break;
+            case state.actions.EXAMINE:
+                entity.printDescription();
+                break;
+            case state.actions.PICKUP:
+                entity.pickup();
+                break;
+            case state.actions.COMBINE:
+                printMessage("That won't work.");
+                break;
+            default:
+                break;
+        }
+    },
 }
