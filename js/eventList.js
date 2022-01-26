@@ -68,9 +68,7 @@ export let eventList = {
                 printMessage("Welcome to Notzork!");
                 printMessage("The Underground States of Notzork is a legally distinct entity from Zork: The Great Underground Empire.");
                 printMessage("But like that game, Notzork is also a game of adventure, danger and low cunning.");
-                /* TODO: figure out the maximum number of points when the game is finished.
-                 * It can't be calculated from db.entities, because points can also be given in events. */
-                printMessage("Try to get all x points in as few moves as possible!");
+                printMessage("Try to get all 350 points in as few moves as possible!");
                 break;
             case state.actions.PICKUP:
                 console.log("the PICKUP action for inventory items should be handled by entity object.");
