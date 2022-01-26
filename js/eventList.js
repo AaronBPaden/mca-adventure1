@@ -206,4 +206,28 @@ export let eventList = {
                 break;
         }
     },
+    lantern0: (event, entity) => {
+        const pickupLantern = () => {
+            printMessage("You suspected the key would lead you to great treasure and you were right! The ancient brass lantern pulses with magic and the entire room is illuminated.");
+            db.rooms.cellar.background = 'cellar1.png';
+            state.hasLantern = true;
+            entity.pickup();
+        };
+        switch(state.activeAction) {
+            case state.actions.USE:
+                printMessage("The lantern pulses with magic. You can't use it from here.");
+                break;
+            case state.actions.EXAMINE:
+                entity.printDescription();
+                break;
+            case state.actions.PICKUP:
+                pickupLantern();
+                break;
+            case state.actions.COMBINE:
+                printMessage("That won't work.");
+                break;
+            default:
+                break;
+        }
+    },
 }
