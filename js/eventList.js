@@ -225,4 +225,32 @@ export let eventList = {
                 break;
         }
     },
+    well0: (event, entity) => {
+        const combineWell = () => {
+            if (state.carriedItem !== db.entities.rope) {
+                printMessage("That won't work.");
+                return;
+            }
+            entity.incrementState();
+            state.removeItem(db.entities.key)
+            db.rooms.well.setRoom(Room.exits.WEST, "bottomOfWell");
+            db.rooms.well.draw();
+        };
+        switch(state.activeAction) {
+            case state.actions.USE:
+                printMessage("You can't use the well.");
+                break;
+            case state.actions.EXAMINE:
+                entity.printDescription();
+                break;
+            case state.actions.PICKUP:
+                printMessage("That won't work");
+                break;
+            case state.actions.COMBINE:
+                combineWell();
+                break;
+            default:
+                break;
+        }
+    },
 }

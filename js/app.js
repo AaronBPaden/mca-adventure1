@@ -12,7 +12,7 @@ import { state } from './state.js';
     }
     const updateFoundTreasure = () => {
         if (state.foundTreasure) return;
-        if (!db.rooms.canSee()) return;
+        if (!db.rooms[state.currentRoom].canSee()) return;
         state.foundTreasure = true;
         state.updateScore(200);
     }
