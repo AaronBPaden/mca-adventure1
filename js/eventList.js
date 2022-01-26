@@ -187,6 +187,7 @@ export let eventList = {
             entity.move(450,310);
             entity.incrementState();
             state.updateScore(20);
+            db.rooms.northOfHouse.setRoom(Room.exits.SOUTH, "cellar");
         };
         switch(state.activeAction) {
             case state.actions.USE:
