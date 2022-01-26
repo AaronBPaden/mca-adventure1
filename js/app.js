@@ -39,9 +39,10 @@ import { state } from './state.js';
         state.hasLantern = state.debugLantern.checked;
         state.lanternMoves = parseInt(state.debugLanternMoves.value);
 
-        let addItem = state.debugAddItemId.value;
-        if (addItem != "") {
-            state.inventory.push(db.entities[parseInt(addItem)]);
+        let item = state.debugAddItemId.value;
+        if (item in db.entities) {
+            console.log("reached");
+            db.entities[item].pickup();
         }
 
         let room = debugRoom.value;
