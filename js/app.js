@@ -41,7 +41,6 @@ import { state } from './state.js';
 
         let item = state.debugAddItemId.value;
         if (item in db.entities) {
-            console.log("reached");
             db.entities[item].pickup();
         }
 
