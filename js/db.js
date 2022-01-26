@@ -11,6 +11,7 @@ export let db = {
         southOfHouse: new Room({id: 2, name: 'South of House', description: 'As you approach the south side of the house, you notice a window that is slightly adjar. To the west, you can return back the way you came.', exits: {west: 'westOfHouse'}, background: 'south-of-house.png', objectList: ['southWindow']}),
         well: new Room({id: 3, name: 'The Well', objectList: ['well'], description: 'In front of you is a well. Behind you is a white house. To the west there is a massive cliff that is too difficult to climb.', exits: {east: 'westOfHouse'}, background: 'the-well.png'}),
         kitchen: new Room({id: 4, name: 'The Kitchen', objectList: ['key', 'rope'], description: 'An old kitchen lies before you with a large table in the center. The only light is from open the window back outside. The doorway out of the kitchen is boarded up.', exits: {south: 'southOfHouse'}, background: 'kitchen.png'}),
+        cellar: new Room({id: 5, name: 'The cellar', objectList: ['lantern'], description: 'As you take the steps down into the cellar, darkness seems to creep in all around you. Your only protection is an old brass lantern.', exits: {north: 'northOfHouse'}, background: "cellar0.png"}),
     },
     entities: {
         mailbox: new Entity({id: 0, name: "mailbox", description: "it's a mailbox", urlList: ["mailbox.png"], width: 200, height: 400, x: 630, y: 375, eventList: ["mailbox0"]}),
@@ -22,5 +23,6 @@ export let db = {
         rope: new Entity({id: 6, name: 'a rope', description: "A coil of rope. It might come in handy.", urlList: ['rope.png'], inventoryThumbnail: 'rope.png', width: 71, height: 48, x: 340, y: 300, eventList: ['rope0']}),
         well: new Entity({id: 7, name: 'a well', description: "A deep well lies before you. When you look down, all you see is a pitch black abyss.", urlList: ['well0.png', 'well1.png'], width: 637, height: 537, x: 225, y: 228}),
         cellarDoor: new Entity({id: 8, name: 'a cellar door', description: "A sturdy metal door lies on a foundation of concrete. There is a handle with a lock above it.", urlList: ['cellar0.png', 'cellar1.png'], width: 309, height: 256, x: 560, y: 410}),
+        lantern: new Entity({id: 9, name: 'a lantern', description: 'This is no ordinary lantern. You can feel the magic pulsing off of it.', urlList: ['lantern.png'], width: 43, height: 94, x: 478, y: 270, points: 100}),
     },
 }
