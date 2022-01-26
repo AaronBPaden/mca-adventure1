@@ -12,6 +12,7 @@ export let db = {
         well: new Room({id: 3, name: 'The Well', objectList: ['well'], description: 'In front of you is a well. Behind you is a white house. To the west there is a massive cliff that is too difficult to climb.', exits: {east: 'westOfHouse'}, background: 'the-well.png'}),
         kitchen: new Room({id: 4, name: 'The Kitchen', objectList: ['key', 'rope'], description: 'An old kitchen lies before you with a large table in the center. The only light is from open the window back outside. The doorway out of the kitchen is boarded up.', exits: {south: 'southOfHouse'}, background: 'kitchen.png'}),
         cellar: new Room({id: 5, name: 'The cellar', objectList: ['lantern'], description: 'As you take the steps down into the cellar, darkness seems to creep in all around you. Your only protection is an old brass lantern.', exits: {north: 'northOfHouse'}, background: "cellar0.png"}),
+        bottomOfWell: new Room({id: 6, name: 'The Bottom of a Deep Well', description: "You've reached the bottom of the deep well, where there lies a great treasure! In one corner is a huge pile of gold coins.", exits: {north: 'well', south: 'well', east: 'well', west: 'well'}, background: "bottom-of-well.png", isDark: true}),
     },
     entities: {
         mailbox: new Entity({id: 0, name: "mailbox", description: "it's a mailbox", urlList: ["mailbox.png"], width: 200, height: 400, x: 630, y: 375, eventList: ["mailbox0"]}),

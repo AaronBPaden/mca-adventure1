@@ -27,7 +27,7 @@ export class Room {
         state.viewport.style.background = '';
 
         /* If the room is dark and the player doesn't have a lantern, we set the background to black and don't add items. */
-        if (!this.#canSee()) {
+        if (!this.canSee()) {
             state.viewport.style.background = "black";
             return;
         }
@@ -42,7 +42,7 @@ export class Room {
         });
     }
 
-    #canSee() {
+    canSee() {
         return (!this.isDark || (state.hasLantern && state.lanternMoves > 0));
     }
 
@@ -72,7 +72,7 @@ export class Room {
 
     /* print description in the message area */
     printDescription() {
-        if (this.#canSee()) {
+        if (this.canSee()) {
             state.messageArea.innerHTML += `<p class="message-text">${this.description}</p>`;
             state.messageArea.scrollBy(0, parseInt(state.messageArea.clientHeight)-20);
         } else {

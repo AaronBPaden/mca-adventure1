@@ -4,12 +4,7 @@ import { db } from './db.js';
 import { state } from './state.js';
 import { Room } from './room.js';
 
-const printMessage = (msg) => {
-    state.messageArea.innerHTML += `<p class="message-text">${msg}</p>`;
-    /* TODO: find a good sweet spot for messages whose length
-     * is greater than the message area height. */
-    state.messageArea.scrollBy(0, parseInt(state.messageArea.clientHeight)-100);
-};
+const printMessage = state.printMessage;
 
 export let eventList = {
     mailbox0: (event, entity) => {

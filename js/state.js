@@ -13,6 +13,7 @@ export let state = {
     carriedItem: null,
     hasLantern: false,
     lanternMoves: 100,
+    foundTreasure: false,
     inventory: [],
     activeAction: null,
     /* global display elements */
@@ -89,5 +90,11 @@ export let state = {
         /* Probably the function is being called because the player is using an item that is no longer needed.
          * Let's reset the current action to stop the item still being in the player's hand. */
         state.setAction(state.actions.USE);
+    },
+    printMessage: (msg) => {
+        state.messageArea.innerHTML += `<p class="message-text">${msg}</p>`;
+        /* TODO: find a good sweet spot for messages whose length
+         * is greater than the message area height. */
+        state.messageArea.scrollBy(0, parseInt(state.messageArea.clientHeight)-100);
     },
 };

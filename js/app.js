@@ -10,18 +10,31 @@ import { state } from './state.js';
         state.messageArea.innerHTML = "";
         room.printDescription();
     }
+    const updateFoundTreasure = () => {
+        if (state.foundTreasure) return;
+        if (!db.rooms.canSee()) return;
+        state.foundTreasure = true;
+        state.updateScore(200);
+    }
+    const grueAttack = () => {
+        state.printMessage("You have been eaten by a grue. Refresh to restart.");
+    }
     let directionalButtons = document.querySelectorAll('.directional-button');
     state.activeAction = state.actions.USE;
     directionalButtons.forEach((e) => e.addEventListener('click', (ev) => {
+        if (!db.rooms[state.currentRoom].canSee()) {
+            grueAttack();
+            return;
+        }
         let roomExit = db.rooms[state.currentRoom].exits[ev.target.id];
         if (roomExit != null) {
             state.currentRoom = roomExit;
             state.incrementMoves(db.rooms[state.currentRoom].isDark);
             state.updateDebug();
             drawRoom();
+            if (db.rooms[state.currentRoom] === db.rooms.bottomOfWell) updateFoundTreasure();
         } else {
-            state.messageArea.innerHTML += "<p>Something halts your progress in this direction. Try a different one.</p>";
-            state.messageArea.scrollBy(0, 40);
+            state.printMessage("Something halts your progress in this direction. Try a different one.");
         }
     }));
     /* Toggle the height of the debugForm and and change the arrow direction. */
