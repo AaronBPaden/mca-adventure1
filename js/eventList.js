@@ -176,4 +176,33 @@ export let eventList = {
                 break;
         }
     },
+    cellar0: (event, entity) => {
+        const tryOpen = () => {
+            if (state.carriedItem !== db.entities.key || entity.currentIndex === 1) {
+                printMessage("That won't work.");
+                return;
+            }
+            state.removeItem(db.entities.key);
+            entity.resize(418, 363);
+            entity.move(450,310);
+            entity.incrementState();
+            state.updateScore(20);
+        };
+        switch(state.activeAction) {
+            case state.actions.USE:
+                printMessage("You can't use the cellar door.");
+                break;
+            case state.actions.EXAMINE:
+                entity.printDescription();
+                break;
+            case state.actions.PICKUP:
+                printMessage("It's too heavy.");
+                break;
+            case state.actions.COMBINE:
+                tryOpen();
+                break;
+            default:
+                break;
+        }
+    },
 }

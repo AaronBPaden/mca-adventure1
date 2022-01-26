@@ -22,7 +22,7 @@ export let db = {
         key: new Entity({id: 5, name: 'a golden key', description: "It's a golden key. You're sure the door it unlocks must lead to a great treasure.", urlList: ['key.png'], inventoryThumbnail: 'key.png', width: 11, height: 22, x: 300, y: 370, eventList: ['key0']}),
         rope: new Entity({id: 6, name: 'a rope', description: "A coil of rope. It might come in handy.", urlList: ['rope.png'], inventoryThumbnail: 'rope.png', width: 71, height: 48, x: 340, y: 300, eventList: ['rope0']}),
         well: new Entity({id: 7, name: 'a well', description: "A deep well lies before you. When you look down, all you see is a pitch black abyss.", urlList: ['well0.png', 'well1.png'], width: 637, height: 537, x: 225, y: 228}),
-        cellarDoor: new Entity({id: 8, name: 'a cellar door', description: "A sturdy metal door lies on a foundation of concrete. There is a handle with a lock above it.", urlList: ['cellar0.png', 'cellar1.png'], width: 309, height: 256, x: 560, y: 410}),
+        cellarDoor: new Entity({id: 8, name: 'a cellar door', eventList: ['cellar0', 'cellar0'], description: "A sturdy metal door lies on a foundation of concrete. There is a handle with a lock above it.", urlList: ['cellar0.png', 'cellar1.png'], width: 309, height: 256, x: 560, y: 410}),
         lantern: new Entity({id: 9, name: 'a lantern', description: 'This is no ordinary lantern. You can feel the magic pulsing off of it.', urlList: ['lantern.png'], width: 43, height: 94, x: 478, y: 270, points: 100}),
     },
 }
