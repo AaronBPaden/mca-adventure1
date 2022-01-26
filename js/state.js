@@ -50,6 +50,7 @@ export let state = {
             case state.actions.USE:
                 document.body.style.cursor = "auto";
                 state.activeAction = action;
+                state.carriedItem = null;
                 break;
             case state.actions.EXAMINE:
                 document.body.style.cursor = "url(media/buttons/examine.png) 16 15, auto";
@@ -70,11 +71,23 @@ export let state = {
                 break;
         }
     },
+    /* Add an item to the player's inventory. */
     addItem: (item) => {
         state.inventory.push(item);
         let li = document.createElement("li");
         li.classList.add("inventory-item");
         li.appendChild(item.inventoryThumbnail);
         state.inventoryList.appendChild(li);
+    },
+    /* Remove an item from the player's inventory. */
+    removeItem: (item) => {
+        Array.from(state.inventoryList.children).forEach((el) => {
+            let img = el.querySelector('img');
+            if (img.src === item.thumbnailSrc) el.remove();
+        });
+        state.inventory = state.inventory.filter((el) => item !== el);
+        /* Probably the function is being called because the player is using an item that is no longer needed.
+         * Let's reset the current action to stop the item still being in the player's hand. */
+        state.setAction(state.actions.USE);
     },
 };
