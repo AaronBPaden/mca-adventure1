@@ -74,6 +74,7 @@ h3 {
 
 .directional-button {
 	cursor: pointer;
+	padding: 0.5rem;
 }
 
 #north {
@@ -100,9 +101,9 @@ h3 {
 	display: inline-grid;
 	grid-template-columns: 50px 50px;
 	grid-template-areas:
-		"n n"
-		"e w"
-		"s s";
+		"n n n n"
+		"e a a w"
+		"s s s s";
 	align-self: center;
 }
 
